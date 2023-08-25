@@ -4,7 +4,7 @@ export DOMAIN=osticket
 export DOMAIN_FOLDER=/var/www/html/$DOMAIN
 
 sudo apt update -y
-sudo apt install -y vim curl wget
+sudo apt install -y vim curl wget unzip tar
 
 # Apache2
 sudo apt install -y apache2
@@ -43,7 +43,7 @@ sudo mysql -u root -p
 
 # OsTicket
 wget -O osticket.zip https://github.com/osTicket/osTicket/releases/download/v1.18/osTicket-v1.18.zip
-sudo unzip osTicket.zip -d $DOMAIN_FOLDER
-sudo cp /var/www/html/osTicket/upload/include/ost-sampleconfig.php /var/www/html/osTicket/upload/include/ost-config.php
+sudo unzip osticket.zip -d $DOMAIN_FOLDER
+sudo cp $DOMAIN_FOLDER/upload/include/ost-sampleconfig.php $DOMAIN_FOLDER/upload/include/ost-config.php
 sudo chown -R www-data:www-data $DOMAIN_FOLDER
 sudo chmod 755 -R $DOMAIN_FOLDER
