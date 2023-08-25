@@ -4,10 +4,9 @@ export DOMAIN=osticket
 export DOMAIN_FOLDER=/var/www/html/$DOMAIN
 
 sudo apt update -y
-sudo apt install -y vim curl wget unzip tar
 
 # Apache2
-sudo apt install -y apache2
+sudo apt install -y vim curl wget unzip tar apache2
 sudo mkdir -p $DOMAIN_FOLDER
 sudo chown -R $USER:$USER $DOMAIN_FOLDER
 
@@ -47,3 +46,9 @@ sudo unzip osticket.zip -d $DOMAIN_FOLDER
 sudo cp $DOMAIN_FOLDER/upload/include/ost-sampleconfig.php $DOMAIN_FOLDER/upload/include/ost-config.php
 sudo chown -R www-data:www-data $DOMAIN_FOLDER
 sudo chmod 755 -R $DOMAIN_FOLDER
+sudo cp $DOMAIN_FOLDER/upload/include/ost-sampleconfig.php $DOMAIN_FOLDER/upload/include/ost-config.php
+sudo chmod 0666 $DOMAIN_FOLDER/upload/include/ost-config.php
+
+# CleanUp
+sudo apt autoremove -y
+rm -rf osticket.zip
